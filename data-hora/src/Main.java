@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
-        System.out.println("Primeiro Desafio");
+        System.out.println("Segundo Desafio (Já havia feito no primeiro) ");
         Scanner input = new Scanner(System.in);
 
         LocalDate dateAtual = LocalDate.now();
@@ -16,7 +16,7 @@ class Main {
         DateTimeFormatter horaFormatada = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 
-        System.out.println("Digite uma tarefa");
+        System.out.println("Digite um Pedido");
         String tarefa = input.nextLine();
 
         System.out.println("Tarefa cadastrada: " + tarefa);
