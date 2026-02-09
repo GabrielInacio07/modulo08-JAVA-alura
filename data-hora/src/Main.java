@@ -2,28 +2,24 @@ import java.text.DateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 //DateTimeFormatter templateDateBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 class Main {
     public static void main(String[] args) {
-        System.out.println("Sexto Desafio");
+        System.out.println("Sétimo Desafio");
 
-        LocalDate dataEvento = LocalDate.of(2026,3,1);
-        LocalDate dataAtual = LocalDate.now();
+        LocalDate dataVencimento = LocalDate.of(2025, 3, 30);
+        Period antecedencia = Period.ofDays(20);
+
+        LocalDate dataLembrete = dataVencimento.minus(antecedencia);
 
         DateTimeFormatter templateDateBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        System.out.println("Data do evento: " + dataEvento.format(templateDateBR));
-        System.out.println("Data atual: " + dataAtual.format(templateDateBR));
-
-        if (dataEvento.isBefore(dataAtual)) {
-            System.out.println("O evento já ocorreu");
-        } else if (dataEvento.isAfter(dataAtual)) {
-            System.out.println("O evento ainda está por vir");
-        } else {
-            System.out.println("O evento está acontecendo hoje");
-        }
+        System.out.println("Data de vencimento: " + dataVencimento.format(templateDateBR));
+        System.out.println("Antecedência: " + antecedencia.getDays() + " dias");
+        System.out.println("Data do lembrete: " + dataLembrete.format(templateDateBR));
 
 
     }
