@@ -1,4 +1,5 @@
 import java.text.DateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -6,21 +7,35 @@ import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
-        System.out.println("Segundo Desafio (Já havia feito no primeiro) ");
+        System.out.println("Terceiro Desafio");
         Scanner input = new Scanner(System.in);
 
-        LocalDate dateAtual = LocalDate.now();
-        LocalTime hora = LocalTime.now();
+        System.out.println("Digite a hora de inicio da Task:");
+        int horaInicio = Integer.parseInt(input.nextLine());
 
-        DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("dd/MM/yy");
-        DateTimeFormatter horaFormatada = DateTimeFormatter.ofPattern("HH:mm:ss");
+        System.out.println("Digite os minutos de inicio da Task:");
+        int minutosInicio = Integer.parseInt(input.nextLine());
 
+        System.out.println("Digite a hora de FIM da Task:");
+        int horaFim = Integer.parseInt(input.nextLine());
 
-        System.out.println("Digite um Pedido");
-        String tarefa = input.nextLine();
+        System.out.println("Digite os minutos de FIM da Task:");
+        int minutosFim = Integer.parseInt(input.nextLine());
 
-        System.out.println("Tarefa cadastrada: " + tarefa);
-        System.out.println("Data do registro: " + dateAtual.format(dataFormatada));
-        System.out.println("Hora do registro: " + hora.format(horaFormatada));
+        LocalTime inicioTask = LocalTime.of(horaInicio,minutosInicio);
+        LocalTime fimTask = LocalTime.of(horaFim,minutosFim);
+
+        if(fimTask.isBefore(inicioTask)) {
+            System.out.println("Horário de fim não pode ser menor que o início.");
+           return;
+        }
+
+        Duration duracaoTask = Duration.between(inicioTask,fimTask);
+
+        System.out.println("Início: " + inicioTask);
+        System.out.println("Fim: " + fimTask);
+        System.out.println("Total: " + duracaoTask.toHours() + " horas e "
+                + duracaoTask.toMinutesPart() + " minutos");
+
     }
 }
